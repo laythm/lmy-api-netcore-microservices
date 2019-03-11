@@ -1,0 +1,96 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C767A870-579B-4936-8B2F-513FDA2E60D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{3224DEB9-DA8C-44B4-B6E8-848103410845}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{ECDF6A7F-D566-4023-BDF4-F15B719A671D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{17C5DF6D-74B0-4DC7-B1A8-B772610999D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Security.API", "Services\Security\Services.Security.API\Services.Security.API.csproj", "{8E8E9C18-FD7B-4F48-949B-654309D2A0A5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Security.Common", "Services\Security\Services.Security.Common\Services.Security.Common.csproj", "{35F7AEBA-6441-4963-96DD-2C31D5CB07B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Security.Core", "Services\Security\Services.Security.Core\Services.Security.Core.csproj", "{0E473853-B760-4066-BD3E-E26F35AD8458}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Security.Infrastructure", "Services\Security\Services.Security.Infrastructure\Services.Security.Infrastructure.csproj", "{12492165-13C0-4CFD-9C54-23535AF39AED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Common", "Framework\Framework.Common\Framework.Common.csproj", "{AE5233B6-6861-4F61-862A-2523EFCC45D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{142E206A-8FC0-4DCD-976C-AC4A704040B4}"
+	ProjectSection(SolutionItems) = preProject
+		DB\script.sql = DB\script.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E8E9C18-FD7B-4F48-949B-654309D2A0A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8E9C18-FD7B-4F48-949B-654309D2A0A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8E9C18-FD7B-4F48-949B-654309D2A0A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8E9C18-FD7B-4F48-949B-654309D2A0A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35F7AEBA-6441-4963-96DD-2C31D5CB07B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35F7AEBA-6441-4963-96DD-2C31D5CB07B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35F7AEBA-6441-4963-96DD-2C31D5CB07B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35F7AEBA-6441-4963-96DD-2C31D5CB07B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E473853-B760-4066-BD3E-E26F35AD8458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E473853-B760-4066-BD3E-E26F35AD8458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E473853-B760-4066-BD3E-E26F35AD8458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E473853-B760-4066-BD3E-E26F35AD8458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12492165-13C0-4CFD-9C54-23535AF39AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12492165-13C0-4CFD-9C54-23535AF39AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12492165-13C0-4CFD-9C54-23535AF39AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12492165-13C0-4CFD-9C54-23535AF39AED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE5233B6-6861-4F61-862A-2523EFCC45D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE5233B6-6861-4F61-862A-2523EFCC45D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE5233B6-6861-4F61-862A-2523EFCC45D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE5233B6-6861-4F61-862A-2523EFCC45D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3224DEB9-DA8C-44B4-B6E8-848103410845} = {C767A870-579B-4936-8B2F-513FDA2E60D9}
+		{8E8E9C18-FD7B-4F48-949B-654309D2A0A5} = {3224DEB9-DA8C-44B4-B6E8-848103410845}
+		{35F7AEBA-6441-4963-96DD-2C31D5CB07B2} = {3224DEB9-DA8C-44B4-B6E8-848103410845}
+		{0E473853-B760-4066-BD3E-E26F35AD8458} = {3224DEB9-DA8C-44B4-B6E8-848103410845}
+		{12492165-13C0-4CFD-9C54-23535AF39AED} = {3224DEB9-DA8C-44B4-B6E8-848103410845}
+		{AE5233B6-6861-4F61-862A-2523EFCC45D3} = {ECDF6A7F-D566-4023-BDF4-F15B719A671D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3122A2AE-647C-4652-B13E-6C40538497FD}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://lmytfs.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Services\\Security\\Services.Security.API\\Services.Security.API.csproj
+		SccProjectTopLevelParentUniqueName1 = LMYFrameworkCore.sln
+		SccProjectName1 = Services/Security/Services.Security.API
+		SccLocalPath1 = Services\\Security\\Services.Security.API
+		SccProjectUniqueName2 = Services\\Security\\Services.Security.Common\\Services.Security.Common.csproj
+		SccProjectTopLevelParentUniqueName2 = LMYFrameworkCore.sln
+		SccProjectName2 = Services/Security/Services.Security.Common
+		SccLocalPath2 = Services\\Security\\Services.Security.Common
+		SccProjectUniqueName3 = Services\\Security\\Services.Security.Core\\Services.Security.Core.csproj
+		SccProjectTopLevelParentUniqueName3 = LMYFrameworkCore.sln
+		SccProjectName3 = Services/Security/Services.Security.Core
+		SccLocalPath3 = Services\\Security\\Services.Security.Core
+		SccProjectUniqueName4 = Services\\Security\\Services.Security.Infrastructure\\Services.Security.Infrastructure.csproj
+		SccProjectTopLevelParentUniqueName4 = LMYFrameworkCore.sln
+		SccProjectName4 = Services/Security/Services.Security.Infrastructure
+		SccLocalPath4 = Services\\Security\\Services.Security.Infrastructure
+		SccProjectUniqueName5 = Framework\\Framework.Common\\Framework.Common.csproj
+		SccProjectTopLevelParentUniqueName5 = LMYFrameworkCore.sln
+		SccProjectName5 = Framework/Framework.Common
+		SccLocalPath5 = Framework\\Framework.Common
+	EndGlobalSection
+EndGlobal
