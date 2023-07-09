@@ -1,7 +1,7 @@
 Features:
 
-.Net core 2.2  
-Entity Framework core 2.2  
+.Net  6
+Entity Framework 
 Async and tasks  
 MVC Webapi  
 Dependency Injection   
