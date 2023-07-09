@@ -1,6 +1,6 @@
 Features:
 
-.Net 6
+.Net  6
 Async and tasks  
 MVC Webapi  
 Dependency Injection   
