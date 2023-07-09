@@ -8,16 +8,24 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Enums\" />
-    <Folder Include="Mapper\" />
+    <Compile Remove="Enums\**" />
+    <Compile Remove="Mapper\**" />
+    <EmbeddedResource Remove="Enums\**" />
+    <EmbeddedResource Remove="Mapper\**" />
+    <None Remove="Enums\**" />
+    <None Remove="Mapper\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.2" />
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
   </ItemGroup>
 
   <ItemGroup>

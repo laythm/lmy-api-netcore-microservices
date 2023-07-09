@@ -2,8 +2,8 @@
 using Framework.Common.DTOs;
 using Framework.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Services.Security.Common.Interfaces;
 using Services.Security.Core.Interfaces;
+using Services.Security.Infrastructure;
 using Services.Security.Infrastructure.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,17 +14,20 @@ namespace Services.Security.Core.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IGenericUnitOfwork<EFDBContext> _uow;
         private readonly IGenericRepository<Users> _repoUsers;
         private readonly IGenericRepository<UserRoles> _repoUsersRoles;
+        private readonly IGenericRepository<Roles> _repRoles;
 
-        public UserService(IUnitOfWork unit,
+        public UserService(IGenericUnitOfwork<EFDBContext> unit,
             IGenericRepository<Users> repoUsers,
-            IGenericRepository<UserRoles> repoUsersRoles)
+            IGenericRepository<UserRoles> repoUsersRoles,
+            IGenericRepository<Roles> repRoles)
         {
             _uow = unit;
             _repoUsers = repoUsers;
             _repoUsersRoles = repoUsersRoles;
+            _repRoles = repRoles;
         }
 
         public async Task<DTOBase> AddUser(UserDTO userDTO)
@@ -46,10 +49,11 @@ namespace Services.Security.Core.Services
 
                 foreach (var roleID in userDTO.UserRoleIDs)
                 {
-                    _repoUsersRoles.Insert(new UserRoles() { Id = Guid.NewGuid().ToString(), UserId = user.Id, RoleId = roleID });
+                    if (await _repRoles.Query(x => x.Id == roleID).AnyAsync())
+                        _repoUsersRoles.Insert(new UserRoles() { Id = Guid.NewGuid().ToString(), UserId = user.Id, RoleId = roleID });
                 }
 
-                _uow.SaveChanges();
+                _uow.SaveChanges("adminUser");
 
                 dtoBase.AddSuccess("done");
             }

@@ -12,7 +12,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Services.Security.Common.Interfaces;
 using Services.Security.Core.Interfaces;
 using Services.Security.Core.Services;
 using Services.Security.Infrastructure;
@@ -38,10 +37,11 @@ namespace Services.Security.API
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
 
-            services.AddTransient<IGenericRepository<Users>, GenericRepository<Users>>();
-            services.AddTransient<IGenericRepository<UserRoles>, GenericRepository<UserRoles>>();
+            services.AddTransient<IGenericRepository<Users>, GenericRepository<Users, EFDBContext>>();
+            services.AddTransient<IGenericRepository<UserRoles>, GenericRepository<UserRoles, EFDBContext>>();
             services.AddScoped<DbContext, EFDBContext>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IGenericUnitOfwork<EFDBContext>, GenericUnitOfWork<EFDBContext>>();
+
             services.AddTransient<IUserService, UserService>();
         }
 

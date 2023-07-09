@@ -1,6 +1,5 @@
 ﻿using Framework.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Services.Security.Common.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +8,14 @@ using System.Text;
 
 namespace Services.Security.Infrastructure
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity>
+    public class GenericRepository<TEntity, TContext> : IGenericRepository<TEntity>
+        where TContext : DbContext
         where TEntity : class 
     {
-        private DbContext context;
+        private TContext context;
         private DbSet<TEntity> dbSet;
 
-        public GenericRepository(DbContext context)
+        public GenericRepository(TContext context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();
