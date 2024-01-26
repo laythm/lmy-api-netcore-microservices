@@ -1,24 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Framework.Common.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Services.Security.Core.Interfaces;
+using Services.Security.Core.Services;
+using Services.Security.Infrastructure;
+using Services.Security.Infrastructure.Entities;
 
-namespace Services.Security.API
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+ 
+builder.Services.AddDbContext<EFDBContext>(
+              options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+          );
+
+builder.Services.AddTransient<IGenericRepository<Users>, GenericRepository<Users, EFDBContext>>();
+builder.Services.AddTransient<IGenericRepository<UserRoles>, GenericRepository<UserRoles, EFDBContext>>();
+builder.Services.AddTransient<IGenericRepository<Roles>, GenericRepository<Roles, EFDBContext>>();
+builder.Services.AddTransient<IGenericUnitOfwork<EFDBContext>, GenericUnitOfWork<EFDBContext>>();
+
+builder.Services.AddTransient<IUserService, UserService>();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args).Build().Run();
-        }
-
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
-    }
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

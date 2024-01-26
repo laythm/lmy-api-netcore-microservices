@@ -20,6 +20,7 @@ namespace Services.Security.API.Controllers
         public ValuesController(IUserService userService, IConfiguration configuration) :
            base(configuration)
         {
+            _userService = userService;
         }
 
         // GET api/values
